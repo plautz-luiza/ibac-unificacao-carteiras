@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap — Unificação IbacBrasil</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f4f5f7;
+    --border: #dde1e9;
+    --accent: #b8960a;
+    --accent2: #1a6fb8;
+    --accent3: #c0184e;
+    --accent4: #0e9e5a;
+    --text: #1a1e28;
+    --muted: #6b7688;
+    --phase1: #7a6000;
+    --phase2: #0f4e8a;
+    --phase3: #8a0f36;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 48px 40px 80px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 56px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .brand-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #0f4e8a;
+    opacity: 0.85;
+  }
+
+  .brand-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .header-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .meta-pill {
+    font-size: 12px;
+    font-weight: 500;
+    color: #4a5260;
+    background: #f0f2f5;
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+
+  .meta-pill span {
+    color: #0f4e8a;
+    font-weight: 600;
+  }
+
+  /* ── OBJETIVO ── */
+  .objective {
+    background: #fffbea;
+    border: 1px solid #e8d87a;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .objective::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: #b8960a;
+    border-radius: 2px 0 0 2px;
+  }
+
+  .objective-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8a6e00;
+    margin-bottom: 8px;
+  }
+
+  .objective-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: #3a4050;
+    font-weight: 300;
+    max-width: 860px;
+  }
+
+  .objective-text strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* ── TIMELINE HEADER ── */
+  .timeline-wrapper {
+    position: relative;
+  }
+
+  .months-header {
+    display: grid;
+    grid-template-columns: 200px repeat(6, 1fr);
+    gap: 0;
+    margin-bottom: 0;
+  }
+
+  .months-label {
+    display: flex;
+    align-items: center;
+    padding: 0 0 16px 0;
+  }
+
+  .months-label span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .month-col {
+    text-align: center;
+    padding: 0 4px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .month-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .month-num {
+    font-size: 10px;
+    color: rgba(107,118,136,0.5);
+    margin-top: 2px;
+  }
+
+  /* ── FASES ── */
+  .phases-row {
+    display: grid;
+    grid-template-columns: 200px repeat(6, 1fr);
+    gap: 0;
+    margin: 16px 0 24px;
+  }
+
+  .phases-label {
+    display: flex;
+    align-items: center;
+  }
+
+  .phases-label span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .phase-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 6px;
+    margin: 2px 3px;
+  }
+
+  .phase-1 { background: #fef4c0; color: #7a6000; border: 1px solid #e0cc60; }
+  .phase-2 { background: #dbeeff; color: #0f4e8a; border: 1px solid #80bce8; }
+  .phase-3 { background: #fde0ea; color: #8a0f36; border: 1px solid #e09ab8; }
+
+  .phase-span-2 { grid-column: span 2; }
+  .phase-span-2b { grid-column: span 2; }
+  .phase-span-2c { grid-column: span 2; }
+
+  /* ── TRILHAS ── */
+  .tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .track-row {
+    display: grid;
+    grid-template-columns: 200px repeat(6, 1fr);
+    gap: 0;
+    min-height: 52px;
+    align-items: center;
+  }
+
+  .track-row:not(:last-child) {
+    border-bottom: 1px solid rgba(30,37,48,0.6);
+  }
+
+  .track-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px 8px 0;
+  }
+
+  .track-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .track-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .track-sub {
+    font-size: 10px;
+    color: var(--muted);
+    font-weight: 400;
+    margin-top: 1px;
+  }
+
+  .cell {
+    padding: 4px 3px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+  }
+
+  .bar {
+    height: 32px;
+    border-radius: 6px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 10.5px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default;
+    transition: filter 0.2s, transform 0.2s;
+    position: relative;
+  }
+
+  .bar:hover {
+    filter: brightness(1.15);
+    transform: scaleY(1.05);
+    z-index: 10;
+  }
+
+  .bar-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-right: 7px;
+    flex-shrink: 0;
+  }
+
+  /* Comercial */
+  .c1 { background: #fef9e0; color: #7a6000; border: 1px solid #e8d47a; }
+  .c2 { background: #fdf4c8; color: #6a5000; border: 1px solid #d8c060; }
+  .c3 { background: #fbedb0; color: #5a4200; border: 1px solid #c8aa40; }
+
+  /* Dados */
+  .d1 { background: #e8f3fc; color: #0f4e8a; border: 1px solid #8abde0; }
+  .d2 { background: #d8eaf8; color: #0a3e70; border: 1px solid #6aaad0; }
+  .d3 { background: #c8e0f4; color: #083260; border: 1px solid #5098c0; }
+
+  /* Marca */
+  .m1 { background: #fce8ef; color: #8a0f36; border: 1px solid #e0a0b8; }
+  .m2 { background: #f8d8e4; color: #700a2c; border: 1px solid #d080a0; }
+  .m3 { background: #f4c8d8; color: #580820; border: 1px solid #c06088; }
+
+  /* Jurídico */
+  .j1 { background: #e4f8ef; color: #0a6e3e; border: 1px solid #7ed0a8; }
+  .j2 { background: #d0f0e4; color: #085c32; border: 1px solid #5ec090; }
+
+  .bar-empty { opacity: 0; pointer-events: none; }
+
+  /* Milestone marker */
+  .milestone {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    margin: 0 auto;
+    border: 2px solid;
+    background: var(--bg);
+  }
+
+  /* ── LEGENDA ── */
+  .legend {
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .legend-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .legend-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2px;
+  }
+
+  .legend-items {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
+    color: #8a95a8;
+    font-weight: 400;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #9aa0b0;
+  }
+
+  /* ── KPIs RÁPIDOS ── */
+  .kpis {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .kpi-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .kpi-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    height: 2px;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .kpi-card:nth-child(1)::after { background: var(--accent); }
+  .kpi-card:nth-child(2)::after { background: var(--accent2); }
+  .kpi-card:nth-child(3)::after { background: var(--accent3); }
+  .kpi-card:nth-child(4)::after { background: var(--accent4); }
+
+  .kpi-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .kpi-label {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="brand">
+    <span class="brand-tag">Plano Estratégico</span>
+    <span class="brand-name">Unificação IbacBrasil</span>
+  </div>
+  <div class="header-meta">
+    <div class="meta-pill">Duração: <span>6 meses · Mar–Ago 2025</span></div>
+    <div class="meta-pill">Situação: <span>Em planejamento</span></div>
+    <div class="meta-pill">Versão: <span>1.0</span></div>
+  </div>
+</header>
+
+<!-- OBJETIVO -->
+<div class="objective">
+  <div class="objective-label">Objetivo do Projeto</div>
+  <div class="objective-text">
+    Transformar a IbacBrasil de um conjunto de <strong>marcas e unidades separadas</strong> em uma <strong>empresa unificada</strong>, com uma só marca e um portfólio claro de produtos — tornando a empresa mais coerente, fácil de medir e preparada para crescer, com uma comunicação única para o mercado e uma visão clara de resultados internos.
+  </div>
+</div>
+
+<!-- KPIs -->
+<div class="section-title">Visão Geral do Projeto</div>
+<div class="kpis">
+  <div class="kpi-card">
+    <div class="kpi-value">4</div>
+    <div class="kpi-label">Áreas atuando<br>ao mesmo tempo</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-value">3</div>
+    <div class="kpi-label">Etapas de<br>entrega</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-value">6</div>
+    <div class="kpi-label">Meses de<br>execução</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-value">1</div>
+    <div class="kpi-label">Marca única ao<br>fim do projeto</div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<div class="section-title">O que acontece em cada mês</div>
+<div class="timeline-wrapper">
+
+  <!-- Cabeçalho de meses -->
+  <div class="months-header">
+    <div class="months-label"><span>Área</span></div>
+    <div class="month-col"><div class="month-name">Mar</div><div class="month-num">M1</div></div>
+    <div class="month-col"><div class="month-name">Abr</div><div class="month-num">M2</div></div>
+    <div class="month-col"><div class="month-name">Mai</div><div class="month-num">M3</div></div>
+    <div class="month-col"><div class="month-name">Jun</div><div class="month-num">M4</div></div>
+    <div class="month-col"><div class="month-name">Jul</div><div class="month-num">M5</div></div>
+    <div class="month-col"><div class="month-name">Ago</div><div class="month-num">M6</div></div>
+  </div>
+
+  <!-- Fases -->
+  <div class="phases-row">
+    <div class="phases-label"><span>Etapa</span></div>
+    <div class="phase-block phase-1 phase-span-2">⬡ Etapa 1 — Diagnóstico e Base</div>
+    <div class="phase-block phase-2 phase-span-2b">⬡ Etapa 2 — Construção e Transição</div>
+    <div class="phase-block phase-3 phase-span-2c">⬡ Etapa 3 — Finalização e Virada</div>
+  </div>
+
+  <!-- TRILHAS -->
+  <div class="tracks">
+
+    <!-- COMERCIAL -->
+    <div class="track-row">
+      <div class="track-label">
+        <div class="track-icon" style="background:#fef4c0;">🤝</div>
+        <div>
+          <div class="track-name">Comercial &amp; Operação</div>
+          <div class="track-sub">Carteiras · Metas · Venda cruzada</div>
+        </div>
+      </div>
+      <div class="cell"><div class="bar c1"><div class="bar-dot" style="background:#b8960a"></div>Mapeamento de carteiras</div></div>
+      <div class="cell"><div class="bar c1"><div class="bar-dot" style="background:#b8960a"></div>Redesenho de metas e incentivos</div></div>
+      <div class="cell"><div class="bar c2"><div class="bar-dot" style="background:#8a6e00"></div>Capacitação de portfólio</div></div>
+      <div class="cell"><div class="bar c2"><div class="bar-dot" style="background:#8a6e00"></div>Teste de venda cruzada</div></div>
+      <div class="cell"><div class="bar c3"><div class="bar-dot" style="background:#6a5000"></div>Expansão + revisão de metas</div></div>
+      <div class="cell"><div class="bar c3"><div class="bar-dot" style="background:#6a5000"></div>Operação unificada</div></div>
+    </div>
+
+    <!-- DADOS -->
+    <div class="track-row">
+      <div class="track-label">
+        <div class="track-icon" style="background:#dbeeff;">📊</div>
+        <div>
+          <div class="track-name">Dados &amp; Sistemas</div>
+          <div class="track-sub">Sistema de clientes · Painéis · Relatórios</div>
+        </div>
+      </div>
+      <div class="cell"><div class="bar d1"><div class="bar-dot" style="background:#1a6fb8"></div>Levantamento de dados e planilhas</div></div>
+      <div class="cell"><div class="bar d1"><div class="bar-dot" style="background:#1a6fb8"></div>Estrutura do sistema de clientes</div></div>
+      <div class="cell"><div class="bar d2"><div class="bar-dot" style="background:#0f5090"></div>Migração de dados históricos</div></div>
+      <div class="cell"><div class="bar d2"><div class="bar-dot" style="background:#0f5090"></div>Painéis por carteira</div></div>
+      <div class="cell"><div class="bar d3"><div class="bar-dot" style="background:#083270"></div>Painéis de margem e produto</div></div>
+      <div class="cell"><div class="bar d3"><div class="bar-dot" style="background:#083270"></div>Relatórios de gestão ao vivo</div></div>
+    </div>
+
+    <!-- MARCA -->
+    <div class="track-row">
+      <div class="track-label">
+        <div class="track-icon" style="background:#fde0ea;">🎯</div>
+        <div>
+          <div class="track-name">Ativos &amp; Marca</div>
+          <div class="track-sub">Site · Páginas de venda · Canais</div>
+        </div>
+      </div>
+      <div class="cell"><div class="bar m1"><div class="bar-dot" style="background:#c0184e"></div>Levantamento de canais e materiais</div></div>
+      <div class="cell"><div class="bar m1"><div class="bar-dot" style="background:#c0184e"></div>Plano de migração e encerramento</div></div>
+      <div class="cell"><div class="bar m2"><div class="bar-dot" style="background:#900e3a"></div>Novo site IbacBrasil</div></div>
+      <div class="cell"><div class="bar m2"><div class="bar-dot" style="background:#900e3a"></div>Migração de páginas e materiais</div></div>
+      <div class="cell"><div class="bar m3"><div class="bar-dot" style="background:#700828"></div>Encerramento Trânsito EAD / ParceiroCFC</div></div>
+      <div class="cell"><div class="bar m3"><div class="bar-dot" style="background:#700828"></div>Marca unificada no ar</div></div>
+    </div>
+
+    <!-- JURÍDICO -->
+    <div class="track-row">
+      <div class="track-label">
+        <div class="track-icon" style="background:#e4f8ef;">📋</div>
+        <div>
+          <div class="track-name">Jurídico &amp; Qualidade</div>
+          <div class="track-sub">Contratos · LGPD · ISO/SGQ</div>
+        </div>
+      </div>
+      <div class="cell"><div class="bar j1"><div class="bar-dot" style="background:#0a6e3e"></div>Levantamento de contratos e docs</div></div>
+      <div class="cell"><div class="bar j1"><div class="bar-dot" style="background:#0a6e3e"></div>Minutas de aditivos e LGPD</div></div>
+      <div class="cell"><div class="bar j2"><div class="bar-dot" style="background:#085c32"></div>Atualização de SGQ/ISO</div></div>
+      <div class="cell"><div class="bar j2"><div class="bar-dot" style="background:#085c32"></div>Assinatura de contratos</div></div>
+      <div class="cell"><div class="bar j2"><div class="bar-dot" style="background:#085c32"></div>Validação jurídica final</div></div>
+      <div class="cell"><div class="bar j1"><div class="bar-dot" style="background:#0a6e3e"></div>Documentação consolidada ✓</div></div>
+    </div>
+
+  </div><!-- /tracks -->
+</div><!-- /timeline-wrapper -->
+
+<!-- LEGENDA -->
+<div class="legend">
+  <div class="legend-group">
+    <div class="legend-title">Áreas</div>
+    <div class="legend-items">
+      <div class="legend-item"><div class="legend-dot" style="background:#e0cc60"></div>Comercial &amp; Operação</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#80bce8"></div>Dados &amp; Sistemas</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#e09ab8"></div>Ativos &amp; Marca</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#7ed0a8"></div>Jurídico &amp; Qualidade</div>
+    </div>
+  </div>
+  <div class="legend-group">
+    <div class="legend-title">Etapas</div>
+    <div class="legend-items">
+      <div class="legend-item"><div class="legend-dot" style="background:#e0cc60; border-radius:10px;"></div>Etapa 1 — Diagnóstico e Base (Mar–Abr)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#80bce8; border-radius:10px;"></div>Etapa 2 — Construção e Transição (Mai–Jun)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#e09ab8; border-radius:10px;"></div>Etapa 3 — Finalização e Virada (Jul–Ago)</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>IbacBrasil · Roadmap Estratégico de Unificação · Confidencial</span>
+  <span>Gerado em março/2025 · v1.0</span>
+</div>
+
+</body>
+</html>
